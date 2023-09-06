@@ -1,0 +1,40 @@
+// 옛날에는 다 넣어야했는데..
+// https://start.spring.io/ 에서 생성하니까 편하다
+// gradle 은 그냥 버전설정하고 라이브러리 땡겨오는 곳이다 라고만 이해하고 나중에 공부하기
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.15'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'hello'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+repositories {
+	// 기본적에서 maven central 이라는 공개된 사이트에서 받아온다.
+	// 필요시에 다른 사이트에서도 받을 수 있다.
+	mavenCentral()
+}
+
+dependencies {
+	// 우리가 초기화 된 라이브러리는 3개밖에없느넫
+	// External Libraries 보면 엄청 많다.. Why?
+	// -> gradle 이나 maven 같으 빌드 툴들은 의존관계를 다 관리해준다.
+	// starter-web 을 땡겨오면 다른 것들도 다 땡겨온다.
+	// 나는 다른애 , 얘는 다른에, 그러면서 spring-core 까지 다 땡겨온다.
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	// html 변경시 컴파일만 해주고, 서버 재기동 없이 실행할 수 있게 하는 라이브러리 의존성 추가
+	runtimeOnly('org.springframework.boot:spring-boot-devtools')
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
