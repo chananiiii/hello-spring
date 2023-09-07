@@ -3,14 +3,20 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 // ctrl + shfit + T 하면 테스트 케이스를 만들 수 있다. 편하게
+// @Service를 선언하게 되면, 스프링이 올라올때, 얘를 서비스네 하고, 컨트롤러에 멤버서비스를 등록하게 된다.
+
 public class MemberService {
     private final MemberRepository memberRepository;
 
+    // 어 너도 맴버 레파지토리가 필요하네, 스프링에 있는 멤버레파지토리를 넣어줄께.. 라는 의미
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
