@@ -29,10 +29,13 @@ dependencies {
 	// 나는 다른애 , 얘는 다른에, 그러면서 spring-core 까지 다 땡겨온다.
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	runtimeOnly 'com.h2database:h2'
 	// html 변경시 컴파일만 해주고, 서버 재기동 없이 실행할 수 있게 하는 라이브러리 의존성 추가
-	runtimeOnly('org.springframework.boot:spring-boot-devtools')
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {
